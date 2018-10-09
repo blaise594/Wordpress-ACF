@@ -1,4 +1,5 @@
 <?php
+//Not sure if this is neccesary for site
 //Insert into functions.php file
 /*********************
 ADD ACF OPTION PAGES

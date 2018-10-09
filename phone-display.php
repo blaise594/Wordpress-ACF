@@ -1,6 +1,7 @@
 
-<?php 
 
+<?php 
+//implemented into site
 function get_the_user_ip() {
     if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
     //Checks if IP is from shared internet
@@ -25,30 +26,21 @@ function get_the_user_ip() {
 
 
 $posts = get_posts(array(
-	'posts_per_page'	=> -1,
-	'post_type'			=> 'location'
+    'posts_per_page'    => -1,
+    'post_type'         => 'location'
 ));
 $userCity=get_the_user_ip();
 if( $posts ): 
-	
-	
-		
-	 foreach( $posts as $post ): 
-		
-        $cityField=get_field('city');
-        //echo "$cityField";        
-        $phoneField=get_field('phone_number');
-        //echo "$phoneField";
-         if($userCity==$cityField){
-             echo ($phoneField);
-         }
-	
-	 endforeach;
-	
-	
-	wp_reset_postdata(); 
-
+     foreach( $posts as $post ): 
+		$stateField=get_field('state');
+        $cityField=get_field('city');                
+        $phoneField=get_field('phone_number');        
+        if($userCity==$cityField){
+             echo ( $cityField . ',' . ' ' . $stateField . '</br>' . $phoneField );
+         }		
+     endforeach;
+    wp_reset_postdata(); 
  endif; 
 
-//function display_phone(){
+
 ?>
