@@ -1,0 +1,42 @@
+/*
+Theme Name: Pool Troopers Salient Child Theme
+Theme URI: http: //bakemorepies.com/
+Description: Pool Troopers main theme (Salient Child Theme)
+Author: Bake More Pies
+Author URI: http: //bakemorepies.com/
+Template: salient
+Version: 0.1
+*/
+
+.location{
+	font-size: 20px;
+    color: #143647;
+	
+	
+}
+.phone-span{
+	font-size: 35px;
+    color: #ba2920;
+	
+}
+
+.location-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 25% 100px auto;
+}
+.address{
+	 
+	 color: #134757;
+     font-size: 20px;	 
+ 
+}
+
+.first-p-title{
+	font-size: 24px;
+    color: #198fb6;
+}
+
+
+
+
