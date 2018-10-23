@@ -374,7 +374,7 @@ wp_footer(); ?>
 
 <?php if($theme_skin == 'material') { echo '</div></div><!--/ocm-effect-wrap-->'; } nectar_hook_before_body_close(); ?>
 
-<script>document.getElementById("phone").innerHTML = '<?php include("phone-display.php"); ?>';</script>
+<script>document.getElementById("phone").innerHTML = '<?php include("/inc/phone-display.php"); ?>';</script>
 <?php include("zip-search.php"); ?>
 <!-- <script>
 $("#phone").click(function(){

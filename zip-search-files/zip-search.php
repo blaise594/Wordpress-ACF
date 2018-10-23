@@ -1,4 +1,5 @@
 <?php
+function 
 $posts = get_posts(array(
     'posts_per_page'    => -1,
     'post_type'         => 'location'
@@ -8,7 +9,8 @@ $userZip=33606;
 
 if( $posts ): 
      foreach( $posts as $post ): 
-		$zipField=get_field('zip_codes_services');
+        $zipField=get_field('zip_codes_serviced');
+        
 		//echo $zipField;
         $zipString = $zipField . ', ';
 		//echo $zipArray;

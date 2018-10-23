@@ -1,9 +1,8 @@
 <?php 
-/*
+ /*
 Template Name: Location
 *
 */
-
 get_header(); 
 nectar_page_header($post->ID); 
 
@@ -12,6 +11,8 @@ $fp_options = nectar_get_full_page_options();
 extract($fp_options);
 
 ?>
+
+
 
 <div class="container-wrap">
 	
@@ -42,7 +43,7 @@ extract($fp_options);
 		</div><!--/row-->
 		
 	</div><!--/container-->
-	
+	<span>Locations Landing Page--where zip code function can go </span>
 </div><!--/container-wrap-->
 
 <?php get_footer(); ?>

@@ -1,5 +1,4 @@
 <?php 
-
 function get_the_user_ip() {
     if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
     //Checks if IP is from shared internet
@@ -15,19 +14,17 @@ function get_the_user_ip() {
     }
     //Uses ipinfo.io to find location information based on IP address
     $details = json_decode(file_get_contents("https://ipinfo.io/{$ip}"));
-
     //Returns city value from the details array
     $city=$details->city;
-
     return apply_filters('wpb_get_ip', $city );
     }
-
-
 $posts = get_posts(array(
     'posts_per_page'    => -1,
     'post_type'         => 'location'
 ));
+
 $userCity=get_the_user_ip();
+
 if( $posts ): 
      foreach( $posts as $post ): 
 		$stateField=get_field('state');
@@ -39,7 +36,5 @@ if( $posts ):
      endforeach;
     wp_reset_postdata(); 
  endif; 
-
-
+ 
 ?>
-<!-- <div id="location-info">Go to location page</div> -->
