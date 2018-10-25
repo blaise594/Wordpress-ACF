@@ -4,7 +4,7 @@ function zip_search($userZip){
 
     $args = array(
     'posts_per_page'    => -1,
-    'post_type'         => 'Location'
+    'post_type'         => 'Locations'
     );
 
 $wp_query = new WP_Query($args); 
@@ -19,11 +19,12 @@ if( $wp_query->have_posts() ): while( $wp_query->have_posts() ) : $wp_query->the
         foreach($array as $value) //loop over values
         {
 			$cityField=get_field('city');
-			$stateField=get_field('state');
+            $stateField=get_field('state');
+            $cityField=strtolower($cityField);
  			//echo $value. '<br>';            
             if($value==$userZip){
-						 
-               return ($cityField . '<br>' . $stateField); //print 
+			   $url='http://dev-pool-troopers.pantheonsite.io/' . 'locations/' . $cityField . '-' . 'fl';		 
+               return ($url); //print 
            }	
                 
         }
