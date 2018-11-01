@@ -1,35 +1,35 @@
-    //main ajax call 
-    function zip_search_ajax(){
-           
-        var zipcode = $('form#zip_search_form input[name="zip_search"]').val();
+$("form#zipcode").on("submit", function(event) {
+    $('form#zipcode .clear-button').addClass('active');
+    event.preventDefault();
     
-    
-                //process the form
-            $.ajax({
-                    type: "POST", // define the type of HTTP verb we want to use (POST for our form)
-                    dataType : "json",
-                    url: ajaxcall.ajaxurl,
-                    data: {
-                        "action": "zip_search", //calls the function in the functions.php file
-                        "zipcode": zipcode
-                    },
-                    success: function(response) {
-    
-                        if(response.length > 0){
-                            
-        
-                        }
-                    }
-    })}
-    
-                <form action="" method="post" id="zip_search_form">
-                <input class="form-control search-input" autocomplete="off" name="zipcode" type="text" value="" placeholder="Enter Zip Code" />
-                </form><input type="submit" />                                                                
-    
-    <script type="text/javascript">
-    document.getElementById("zip_search_form").onclick = function () {
-        location.href = "<?php echo zip_search(zipcode)?>";
-    };
-</script>
+    zipcode_search(zip_search_filter());
+    });    
 
-<?php$zipcode = ( isset($_GET['zipcode']) ?  $_GET['zipcode'] : ''); echo zip_search($zipcode); $url = zip_search( $zipcode ); wp_redirect($url); exit();?>
+function zipcode_search(zip_search_filter) {
+    //add ajax loader
+    $("form#zipcode .ajax-content-loader").addClass("active");
+
+    //process the form
+    $.ajax({
+        type: "POST", // define the type of HTTP verb we want to use (POST for our form)
+        url: ajaxcall.ajaxurl,
+        data: {
+            action: "locations_search", //calls the function in the functions.php file
+            zip_search_filter: zip_search_filter
+        },
+        success: function(response) {
+            //redirect to new page
+            if (response != "") {
+                    alert("You will now be redirected.");
+                    window.location = "http://www.example.com/";
+            }
+
+            //remove the loader
+            $("#zipcode .ajax-content-loader").removeClass(
+                "active"
+            );
+        }
+    });
+
+    return false; //prevents the form from submitting to a new page.
+}
